@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.github.mamonovd</groupId>
+  <artifactId>sql-utils</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <name>SQL-utils</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+    <jackson.version>2.6.7.5</jackson.version>
+    <commons-beanutils.version>1.8.0</commons-beanutils.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>${commons-beanutils.version}</version>
+    </dependency>
+  </dependencies>
+  <url>https://github.com/mamonovd/sql-utils</url>
+  <developers>
+    <developer>
+      <name>Dmitriy Mamonov</name>
+      <email>sassy.but.classic@gmail.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <url>https://github.com/mamonovd/sql-utils.git</url>
+  </scm>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+    </license>
+  </licenses>
+</project>
