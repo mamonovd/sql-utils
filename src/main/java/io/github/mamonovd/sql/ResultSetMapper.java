@@ -115,7 +115,7 @@ public class ResultSetMapper<T> {
 					Field[] fields = outputClass.getDeclaredFields();
 
 					while (rs.next()) {
-						T bean = (T) outputClass.newInstance();
+						T bean = (T) outputClass.getConstructor().newInstance((Object[])null);
 						for (int _iterator = 0; _iterator < rsmd.getColumnCount(); _iterator++) {
 							// getting the SQL column name
 							String columnName = rsmd.getColumnName(_iterator + 1);

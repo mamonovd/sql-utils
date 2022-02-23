@@ -14,7 +14,20 @@ import java.sql.SQLException;
  */
 public class StatementExecutor {
 	/**
-	 * Execute SQL Select using helper
+	 * Execute SQL Select using helper. StatementExecutorHelper#bind(PreparedStatement ps) must be implemented.
+	 * <p>Example usage:<p>
+	 * <pre>
+	 * StatementExecutor.select(conn, "SELECT col FROM table WHERE id = ?", new StatementExecutorHelperBase() {
+	 *   &#64;Override
+	 *   public void bind(PreparedStatement ps) throws SQLException {
+	 *     ps.setInt(1, 1);
+	 *   }
+	 *   
+	 *   &#64;Override
+	 *   public void result(ResultSet rs) throws ResultSetProcessingException {
+	 *     result.set(rs.getString(1));
+	 *   }
+	 * });</pre>
 	 * 
 	 * @param conn     SQL connection to use to run the query
 	 * @param sql      SQL text
@@ -49,7 +62,20 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute SQL Select using helper
+	 * Execute SQL Select using helper. StatementExecutorHelper#bind(PreparedStatement ps) must be implemented.
+	 * <p>Example usage:<p>
+	 * <pre>
+	 * StatementExecutor.select("SELECT col FROM table WHERE id = ?", new StatementExecutorHelperBase() {
+	 *   &#64;Override
+	 *   public void bind(PreparedStatement ps) throws SQLException {
+	 *     ps.setInt(1, 1);
+	 *   }
+	 *   
+	 *   &#64;Override
+	 *   public void result(ResultSet rs) throws ResultSetProcessingException {
+	 *     result.set(rs.getString(1));
+	 *   }
+	 * });</pre>
 	 * 
 	 * @param sql      SQL text
 	 * @param helper   Instance of helper
@@ -71,7 +97,17 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute DML using helper
+	 * Execute DML using helper. StatementExecutorHelper#bind(PreparedStatement ps) must be implemented.
+	 * <p>Example usage:<p>
+	 * <pre>
+	 * StatementExecutor.update(conn, "UPDATE table SET col = ? WHERE id = ?", new StatementExecutorHelperBase() {
+	 *   &#64;Override
+	 *   public void bind(PreparedStatement ps) throws SQLException {
+	 *     int i = 0;
+	 *     ps.setString(++i, "value");
+	 *     ps.setInt(++i, 1);
+	 *   }
+	 * });</pre>
 	 * 
 	 * @param conn   SQL connection to use to run the query
 	 * @param sql    DML text
@@ -97,7 +133,17 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute DML using helper
+	 * Execute DML using helper. StatementExecutorHelper#bind(PreparedStatement ps) must be implemented.
+	 * <p>Example usage:<p>
+	 * <pre>
+	 * StatementExecutor.update("UPDATE table SET col = ? WHERE id = ?", new StatementExecutorHelperBase() {
+	 *   &#64;Override
+	 *   public void bind(PreparedStatement ps) throws SQLException {
+	 *     int i = 0;
+	 *     ps.setString(++i, "value");
+	 *     ps.setInt(++i, 1);
+	 *   }
+	 * });</pre>
 	 * 
 	 * @param sql    DML text
 	 * @param helper Instance of helper
@@ -120,7 +166,32 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute stored procedure using helper
+	 * Execute stored procedure using helper. StatementExecutorHelper#bind(CallableStatement cs) must be implemented.
+	 * <p>Example usage:<p>
+	 * <ul>
+	 * <li>Get returned value:<pre>
+	 * StatementExecutor.call(conn, "{? = call stored_procedure(?)}", new StatementExecutorHelperBase() {
+	 *   &#64;Override
+	 *   public void bind(CallableStatement cs) throws SQLException {
+	 *     int i = 0;
+	 *     cs.registerOutParameter(++i, java.sql.Types.NUMERIC);
+	 *     cs.setInt(++i, 1);
+	 *   }
+     *
+	 *   &#64;Override
+	 *   public void result(CallableStatement cs) throws SQLException {
+	 *     result.set(cs.getLong(1));
+	 *   }
+	 * });</pre></li>
+	 * <li>Execute PL/SQL block:<pre>
+	 * StatementExecutor.call(conn, "BEGIN stored_procedure(?); END;", new StatementExecutorHelperBase() {
+	 *   &#64;Override
+	 *   public void bind(CallableStatement cs) throws SQLException {
+	 *     int i = 0;
+	 *     cs.setInt(++i, 1);
+	 *   }
+	 * });</pre></li>
+	 *</ul>
 	 * 
 	 * @param conn   SQL connection to use to run the query
 	 * @param sql    Call text
@@ -133,7 +204,7 @@ public class StatementExecutor {
 			helper.before(conn);
 			cs = conn.prepareCall(sql);
 			helper.bind(cs);
-			cs.executeUpdate();
+			cs.execute();
 			helper.result(cs);
 			helper.after(conn);
 		} finally {
@@ -147,7 +218,32 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute stored procedure using helper
+	 * Execute stored procedure using helper. StatementExecutorHelper#bind(CallableStatement cs) must be implemented.
+	 * <p>Example usage:<p>
+	 * <ul>
+	 * <li>Get returned value:<pre>
+	 * StatementExecutor.call("{? = call stored_procedure(?)}", new StatementExecutorHelperBase() {
+	 *   &#64;Override
+	 *   public void bind(CallableStatement cs) throws SQLException {
+	 *     int i = 0;
+	 *     cs.registerOutParameter(++i, java.sql.Types.NUMERIC);
+	 *     cs.setInt(++i, 1);
+	 *   }
+     *
+	 *   &#64;Override
+	 *   public void result(CallableStatement cs) throws SQLException {
+	 *     result.set(cs.getLong(1));
+	 *   }
+	 * });</pre></li>
+	 * <li>Execute PL/SQL block:<pre>
+	 * StatementExecutor.call("BEGIN stored_procedure(?); END;", new StatementExecutorHelperBase() {
+	 *   &#64;Override
+	 *   public void bind(CallableStatement cs) throws SQLException {
+	 *     int i = 0;
+	 *     cs.setInt(++i, 1);
+	 *   }
+	 * });</pre></li>
+	 *</ul>
 	 * 
 	 * @param sql    call text
 	 * @param helper Instance of helper

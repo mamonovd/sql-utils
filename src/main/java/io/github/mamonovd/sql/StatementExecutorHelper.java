@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 /**
  * StatementExecutorHelper implementations helper for StatementExecutor methods.
- * Implementations can extend StatementExecutorHelperBase to protect themselves from changes to this interface.
+ * Implementations can extend {@link StatementExecutorHelperBase} to protect themselves from changes to this interface.
  * 
  * @author d_mamonov
  *
@@ -20,6 +20,7 @@ public interface StatementExecutorHelper {
 	 * @throws SQLException Database access error
 	 */
 	public Connection getConnection() throws SQLException;
+	
 	/**
 	 * Bind query parameters
 	 * 
@@ -27,6 +28,14 @@ public interface StatementExecutorHelper {
 	 * @throws SQLException Database access error
 	 */
 	public void bind(PreparedStatement ps) throws SQLException;
+	
+	/**
+	 * Bind call parameters
+	 * 
+	 * @param cs Callable statement
+	 * @throws SQLException Database access error
+	 */
+	public void bind(CallableStatement cs) throws SQLException;
 
 	/**
 	 * Handle result of calling stored procedure

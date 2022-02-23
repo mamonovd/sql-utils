@@ -6,6 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Base empty implementation of {@link StatementExecutorHelper} interface.
+ * 
+ * 
+ * @author d_mamonov
+ *
+ */
 public abstract class StatementExecutorHelperBase implements StatementExecutorHelper {
 	/*
 	 * (non-Javadoc)
@@ -23,6 +30,15 @@ public abstract class StatementExecutorHelperBase implements StatementExecutorHe
 	 */
 	@Override
 	public void bind(PreparedStatement ps) throws SQLException {
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see io.github.mamonovd.sql.StatementExecutorHelper#bind(CallableStatement cs)
+	 */
+	@Override
+	public void bind(CallableStatement cs) throws SQLException {
 	}
 	
 	/*
