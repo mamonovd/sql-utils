@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * <p>Partly borrowed from
  * https://www.codeproject.com/Tips/372152/Mapping-JDBC-ResultSet-to-Object-using-Annotations</p>
  * 
- * @param <T> Class {@link io.github.mamonovd.sql.Entity} to map result set onto
+ * @param <T> Class {@link Entity} to map result set onto
  * 
  * @author d_mamonov
  *

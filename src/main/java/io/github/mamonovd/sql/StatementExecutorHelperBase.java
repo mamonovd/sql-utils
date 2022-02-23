@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 /**
  * Base empty implementation of {@link StatementExecutorHelper} interface.
+ * Please extend this class instead of directly implement it's interface to avoid issues with interface changes.
  * 
  * 
  * @author d_mamonov

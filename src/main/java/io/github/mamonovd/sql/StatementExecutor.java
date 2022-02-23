@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class StatementExecutor {
 	/**
-	 * Execute SQL Select using helper. StatementExecutorHelper#bind(PreparedStatement ps) must be implemented.
+	 * Execute SQL Select using helper. {@link StatementExecutorHelper#bind(PreparedStatement ps)} must be implemented.
 	 * <p>Example usage:<p>
 	 * <pre>
 	 * StatementExecutor.select(conn, "SELECT col FROM table WHERE id = ?", new StatementExecutorHelperBase() {
@@ -62,7 +62,7 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute SQL Select using helper. StatementExecutorHelper#bind(PreparedStatement ps) must be implemented.
+	 * Execute SQL Select using helper. {@link StatementExecutorHelper#bind(PreparedStatement ps)} must be implemented.
 	 * <p>Example usage:<p>
 	 * <pre>
 	 * StatementExecutor.select("SELECT col FROM table WHERE id = ?", new StatementExecutorHelperBase() {
@@ -97,7 +97,7 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute DML using helper. StatementExecutorHelper#bind(PreparedStatement ps) must be implemented.
+	 * Execute DML using helper. {@link StatementExecutorHelper#bind(PreparedStatement ps)} must be implemented.
 	 * <p>Example usage:<p>
 	 * <pre>
 	 * StatementExecutor.update(conn, "UPDATE table SET col = ? WHERE id = ?", new StatementExecutorHelperBase() {
@@ -133,7 +133,7 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute DML using helper. StatementExecutorHelper#bind(PreparedStatement ps) must be implemented.
+	 * Execute DML using helper. {@link StatementExecutorHelper#bind(PreparedStatement ps)} must be implemented.
 	 * <p>Example usage:<p>
 	 * <pre>
 	 * StatementExecutor.update("UPDATE table SET col = ? WHERE id = ?", new StatementExecutorHelperBase() {
@@ -166,7 +166,7 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute stored procedure using helper. StatementExecutorHelper#bind(CallableStatement cs) must be implemented.
+	 * Execute stored procedure using helper. {@link StatementExecutorHelper#bind(CallableStatement cs)} must be implemented.
 	 * <p>Example usage:<p>
 	 * <ul>
 	 * <li>Get returned value:<pre>
@@ -218,7 +218,7 @@ public class StatementExecutor {
 	}
 
 	/**
-	 * Execute stored procedure using helper. StatementExecutorHelper#bind(CallableStatement cs) must be implemented.
+	 * Execute stored procedure using helper. {@link StatementExecutorHelper#bind(CallableStatement cs)} must be implemented.
 	 * <p>Example usage:<p>
 	 * <ul>
 	 * <li>Get returned value:<pre>

@@ -8,7 +8,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Annotation applied to Entity class
- * Entity must contains fields annotated with {@link io.github.mamonovd.sql.Column}
+ * Entity must contains fields annotated with {@link Column}
  * 
  * @author d_mamonov
  */
